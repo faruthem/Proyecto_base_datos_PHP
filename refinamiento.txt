@@ -1,0 +1,70 @@
+refinamiento clave:
+- password: Se usará VARCHAR(255)para almacenamiento seguro.
+- NUA/NUE: INT(6) porque son números hasta 6 dígitos con ZEROFILL que mantiene el tipo entero.
+- User(Tabla usuario): Debe ser UNIQUE ya que no pueden existir dos usuarios con el mismo nombre.
+- Fecha (Tabla UDAS): Tu comentario, cambiaremos a horario y usaremos VARCHAR (100).
+
+
+/* 1. Crear la base de datos */
+CREATE DATABASE IF NOT EXISTS sistema_escolar
+DEFAULT CHARACTER SET utf8mb4
+DEFAULT COLLATE utf8mb4_unicode_ci;
+
+USE sistema_escolar;
+
+/* 2. Tabla Estudiante (Padre) */
+CREATE TABLE Estudiante (
+    ID_estudiante INT AUTO_INCREMENT PRIMARY KEY,
+    Nombre VARCHAR(100) NOT NULL,
+    A_Paterno VARCHAR(100) NOT NULL,
+    A_Materno VARCHAR(100),
+    Carrera VARCHAR(100) NOT NULL,
+    NUA INT(6) ZEROFILL UNIQUE NOT NULL COMMENT 'NUA de 6 dígitos'
+) ENGINE=InnoDB;
+
+/* 3. Tabla Usuarios (Depende de Estudiante) */
+CREATE TABLE Usuarios (
+    ID_user INT AUTO_INCREMENT PRIMARY KEY,
+    User VARCHAR(50) UNIQUE NOT NULL COMMENT 'Nombre de usuario para login',
+    password VARCHAR(255) NOT NULL COMMENT 'JAMÁS guardar texto plano. Solo HASH.',
+    ID_Estudiante INT UNIQUE NOT NULL COMMENT 'Un usuario por estudiante',
+    FOREIGN KEY (ID_Estudiante) REFERENCES Estudiante(ID_estudiante)
+        ON DELETE CASCADE /* Si se borra el estudiante, se borra su usuario */
+) ENGINE=InnoDB;
+
+/* 4. Tabla Profesores */
+CREATE TABLE Profesores (
+    ID_profesores INT AUTO_INCREMENT PRIMARY KEY,
+    Nombre VARCHAR(100) NOT NULL,
+    A_paterno VARCHAR(100) NOT NULL,
+    A_materno VARCHAR(100),
+    NUE INT(6) ZEROFILL UNIQUE NOT NULL COMMENT 'NUE de 6 dígitos',
+    Puesto VARCHAR(100),
+    cubiculo VARCHAR(10)
+) ENGINE=InnoDB;
+
+/* 5. Tabla UDAS (Materias) */
+CREATE TABLE UDAS (
+    ID_UDAS INT AUTO_INCREMENT PRIMARY KEY,
+    Nombre VARCHAR(200) NOT NULL,
+    Horario VARCHAR(100) COMMENT 'Ej: Lunes 10-12, Martes 14-16',
+    Carrera VARCHAR(100)
+) ENGINE=InnoDB;
+
+/* 6. Tabla Inscripciones (Tabla PIVOTE) */
+CREATE TABLE Inscripciones (
+    ID_inscripciones INT AUTO_INCREMENT PRIMARY KEY,
+    ID_estudiante INT NOT NULL,
+    ID_profesor INT NOT NULL,
+    ID_UDA INT NOT NULL,
+    Aula VARCHAR(10) COMMENT 'Cambiado a VARCHAR por si es 201-B',
+
+    FOREIGN KEY (ID_estudiante) REFERENCES Estudiante(ID_estudiante),
+    FOREIGN KEY (ID_profesor) REFERENCES Profesores(ID_profesores),
+    FOREIGN KEY (ID_UDA) REFERENCES UDAS(ID_UDAS)
+) ENGINE=InnoDB;
+
+
+
+
+ESTRUCTURA DE LOS ARCHIVOS (ORGANIZACIÓN)

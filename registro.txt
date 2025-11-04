@@ -1,0 +1,28 @@
+Resumen del Flujo de Registro
+El usuario llena registro.html.
+
+registro.js captura el submit, valida que las contraseñas coincidan y envía los datos por Fetch a registro_handler.php.
+
+registro_handler.php recibe los datos POST.
+
+Valida todo (campos vacíos, NUA 6 dígitos, contraseñas coinciden).
+
+Inicia una Transacción.
+
+Verifica que el NUA y el User no existan (evitando duplicados).
+
+Hashea la contraseña.
+
+INSERT en Estudiante.
+
+Obtiene el lastInsertId().
+
+INSERT en Usuarios usando ese ID.
+
+commit() (confirma) la transacción si todo salió bien.
+
+(Si algo falla, hace rollBack() y nada se guarda).
+
+Devuelve un JSON ({success: true, ...} o {success: false, ...}).
+
+registro.js recibe el JSON y muestra el mensaje de éxito (verde) o error (rojo) al usuario.

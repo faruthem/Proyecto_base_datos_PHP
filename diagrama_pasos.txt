@@ -1,0 +1,18 @@
+Frontend (HTML y CSS)
+index.html 
+css/style.css
+Backend (PHP-conexión y lógica)
+Se usa PDO (PHP Data Objects) previene inyección SQL
+php/db_connect.php (archivo de configuración)
+php/login_handler.php (cerebro del login)
+JavaScript (usamos Fetch)
+conecta index.html con el login_handler.php 
+js/app.js 
+Página protegida y cierre de sesión 
+Lugar al que solo entran usuarios validados
+logout.php script que destruye la sesión 
+
+CREACIÓN DEL USUARIO DE PRUEBA
+
+para lograr login, es necesario un usuario. creamos uno como prueba usando SQL en phpMyAdmin.
+
