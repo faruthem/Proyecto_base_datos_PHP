@@ -36,6 +36,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
+    // ==== NUEVA VERIFICACIÓN:  Contraseña Segura ====
+    // Exigimos 8+ cacarteres, al menos una letra y al menos un número.
+    if (!preg_match('/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/', $password)) {
+        $response['message'] = 'La contraseña debe tener al menos 8 caracteres, incluyendo al menos una letra y un número.';
+        echo json_encode($response);
+        exit;
+    }
+    // FIN DE LA NUEVA VERIFICACIÓN
+
     if (strlen($nua) != 6 || !ctype_digit($nua)) {
          $response['message'] = 'El NUA debe ser un número de 6 dígitos.';
          echo json_encode($response);

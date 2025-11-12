@@ -1,0 +1,39 @@
+/* Estilos para gestionar materias */
+        .gestion-container {
+            margin-bottom: 2.5rem;
+        }
+        .btn-gestion {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .btn-baja {
+            background-color: #dc3545; /* Rojo */
+        }
+        .btn-alta {
+            background-color: #28a745; /* Verde */
+        }
+        .btn-baja:hover { background-color: #c82333; }
+        .btn-alta:hover { background-color: #218838; }
+        
+        /* Mensajes de feedback */
+        .feedback-message {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+            display: none; /* Oculto por defecto */
+        }
+        .feedback-success {
+            background-color: #D4EDDA;
+            color: #155724;
+            display: block;
+        }
+        .feedback-error {
+            background-color: #FFD2D2;
+            color: #D8000C;
+            display: block;
+        }

@@ -68,3 +68,15 @@ CREATE TABLE Inscripciones (
 
 
 ESTRUCTURA DE LOS ARCHIVOS (ORGANIZACIÓN)
+
+
+
+git config --global user.name "Farithem"
+git config --global user.email "k.lopezguzman@ugto.mx"
+
+
+
+HASH (para pruebas)
+Tu contraseña es: 123456
+Tu HASH (guarda esto):
+$2y$10$8CD2ZtPkLbJJPYetDoimEe4rrbdzO0XeO2KHLc/zWVM43JL.ECEly
