@@ -20,8 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         // 3. ¡Seguridad Clave!
-        // Nos aseguramos de que el estudiante (de la sesión)
-        // sea el dueño de la inscripción que intenta borrar.
         // Un alumno no puede borrar la inscripción de otro.
         $stmt = $pdo->prepare(
             "DELETE FROM Inscripciones 

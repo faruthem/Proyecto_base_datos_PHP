@@ -1,6 +1,6 @@
 /* Estilos para el dashboard del estudiante */
         body {
-            display: block; /* Sobreescribimos el centrado del login */
+            display: block; 
             height: auto;
             padding: 2rem;
         }

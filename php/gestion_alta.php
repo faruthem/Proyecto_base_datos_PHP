@@ -25,8 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($stmtCheck->fetch()) {
              throw new \Exception('Ya estás inscrito en este curso.');
         }
-        
-        // (Aquí podrías añadir una lógica de CUPO si lo deseas)
 
         // 4. Inscribimos al alumno
         $stmt = $pdo->prepare(

@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // ==== NUEVA VERIFICACIÓN:  Contraseña Segura ====
-    // Exigimos 8+ cacarteres, al menos una letra y al menos un número.
+    // Exigimos 8+ caracteres, al menos una letra y al menos un número.
     if (!preg_match('/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/', $password)) {
         $response['message'] = 'La contraseña debe tener al menos 8 caracteres, incluyendo al menos una letra y un número.';
         echo json_encode($response);
